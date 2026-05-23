@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Message for You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #ffb6c1, #ffc0cb);
+      font-family: 'Poppins', sans-serif;
+      color: black;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1, #message, button {
+      position: relative;
+      z-index: 10; /* keep text above hearts */
+    }
+
+    h1 { font-size: 2em; margin-top: 20px; }
+
+#message {
+  font-size: 1.2em;
+  max-width: 90%;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 20px auto;
+  word-wrap: break-word;
+  text-align: justify; /* 👈 this makes your text justified */
+}
+
+
+    button {
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      background: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    button:hover { transform: scale(1.05); }
+
+    /* floating hearts */
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: red;
+      opacity: 0.7;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.7; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5em; }
+      #message { font-size: 1em; padding: 10px; }
+      button { font-size: 0.9em; padding: 10px 20px; }
+    }
+      .fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards; /* 2s fade-in */
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  </style>
+</head>
+<body>
+  <h1>For You, Iddu 💕</h1>
+
+  <!-- floating hearts using emoji -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+  <div class="heart" style="left:30%; animation-delay:2s;">💖</div>
+  <div class="heart" style="left:50%; animation-delay:4s;">💕</div>
+  <div class="heart" style="left:70%; animation-delay:1s;">💞</div>
+  <div class="heart" style="left:85%; animation-delay:3s;">💓</div>
+
+  <div id="message"></div>
+
+<script>
+  // Use backticks for multiline string and include \n\n for paragraph spacing
+  const text = `Hi du, sorry kung biglaan to hahaha, alam kong masyado pang maaga pero sapat na kasi yung naobserve ko du. Kahit minsan lang tayo nagkikita kasi busy kapa hahaha makakasama naman kita soon, ikaw lang yung gusto kong mahalin. Ramdam ko yung pagiging maalaga mo, yung lambing mo, may takot kay papa G, pagiging amazona mo rin (jokeee BAHAHAHA), at higit sa lahat, pagiging totoo mo. 
+
+Ang saya saya ko palagi kapag nakakausap kita alam mo naman yun, sorry kung napapasobra haha. I don’t want to pressure you, I just want to be honest. I want you to know that even from a distance, ikaw lang yung pipiliin ko sa araw-araw. 
+
+Du… uhm… Pwede ba kitang ligawan nang dahan-dahan, sa paraang mararamdaman mo yung sincerity ko? Alam kong di ka pa ready, pero gusto ko lang malaman mo na nandito lang ako, handang maghintay at magbigay ng oras para sa atin. Everything I feel for you is real. My intentions are pure and just want to see you happy, as well as making sure you never doubt how deeply loved you’re. 
+
+Alam kong hindi ako perfect, at hindi ko rin ipapakita na ganun ako, pero promise ko na ibibigay ko lagi yung best version ng sarili ko. Even on the roughest days, I won’t walk away. I’m always here and I’m not giving up on you ever. 
+
+I may not be your first, I may not be the best, but i can promise you this, ill be the one that stays until the end. 
+
+
+-Ruan Pogi💖`;
+
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      // Replace newlines with <br> so they show in HTML
+      const char = text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+      document.getElementById("message").innerHTML += char;
+      i++;
+      setTimeout(typeWriter, 10);
+    }
+  }
+  window.onload = typeWriter;
+</script>
+
+</body>
+</html>
