@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Message for You ❤️</title>
   <style>
-body {
-  margin: 0;
-  min-height: 100vh;   /* instead of fixed height */
-  background: linear-gradient(to right, #ffb6c1, #ffc0cb);
-  font-family: 'Poppins', sans-serif;
-  color: black;
-  position: relative;
+    body {
+      margin: 0;
+      min-height: 100vh;   /* instead of fixed height */
+      background: linear-gradient(to right, #ffb6c1, #ffc0cb);
+      font-family: 'Poppins', sans-serif;
+      color: black;
+      position: relative;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* remove justify-content: center if you want natural scroll */
-  overflow-y: auto;    /* allow vertical scrolling */
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* remove justify-content: center if you want natural scroll */
+      overflow-y: auto;    /* allow vertical scrolling */
+    }
 
     h1, #message, button {
       position: relative;
@@ -27,18 +27,17 @@ body {
 
     h1 { font-size: 2em; margin-top: 20px; }
 
-#message {
-  font-size: 1.2em;
-  max-width: 90%;
-  border: 2px solid white;
-  border-radius: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 20px auto;
-  word-wrap: break-word;
-  text-align: justify; /* 👈 this makes your text justified */
-}
-
+    #message {
+      font-size: 1.2em;
+      max-width: 90%;
+      border: 2px solid white;
+      border-radius: 15px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 20px auto;
+      word-wrap: break-word;
+      text-align: justify;
+    }
 
     button {
       padding: 12px 25px;
@@ -71,15 +70,16 @@ body {
       #message { font-size: 1em; padding: 10px; }
       button { font-size: 0.9em; padding: 10px 20px; }
     }
-      .fade-in {
-    opacity: 0;
-    animation: fadeIn 2s forwards; /* 2s fade-in */
-  }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -98,7 +98,7 @@ body {
   // Use backticks for multiline string and include \n\n for paragraph spacing
   const text = `Hi du, nais ko lang sabihin na mahal na mahal kita. I know we haven’t seen each other much, but I want you to know that you’re always on my mind.
 
-  Ramdam ko yung pagiging maalaga mo, yung lambing mo, may takot kay papa G, pagiging amazona mo rin (jokeee BAHAHAHA), at higit sa lahat, pagiging totoo mo.
+Ramdam ko yung pagiging maalaga mo, yung lambing mo, may takot kay papa G, pagiging amazona mo rin (jokeee BAHAHAHA), at higit sa lahat, pagiging totoo mo.
 
 Ang saya saya ko palagi kapag nakakausap kita alam mo naman yun, sorry kung napapasobra haha. I don’t want to pressure you, I just want to be honest. I want you to know that even from a distance, ikaw lang yung pipiliin ko sa araw-araw.
 
@@ -122,7 +122,6 @@ I may not be your first, I may not be the best, but I can promise you this: I’
   }
   window.onload = typeWriter;
 </script>
-
 
 </body>
 </html>
