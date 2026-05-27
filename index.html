@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh; /* allow scrolling */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -16,6 +16,7 @@
       font-family: 'Poppins', sans-serif;
       color: #fff;
       text-align: center;
+      overflow-y: auto;
     }
     h1 { font-size: 2em; margin-bottom: 20px; }
     button {
@@ -28,60 +29,73 @@
       color: white;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
+      /* Always glowing + pulsing */
+      animation: glow 1.5s ease-in-out infinite alternate, pulse 1.5s ease-in-out infinite;
     }
     button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #fff;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #fff;
     }
-    /* Animations */
-    .shake {
-      animation: shake 0.4s;
+
+    @keyframes glow {
+      from { box-shadow: 0 0 5px #ff69b4; }
+      to   { box-shadow: 0 0 20px #fff; }
     }
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      75% { transform: translateX(-5px); }
-      100% { transform: translateX(0); }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
-    .bounce {
-      animation: bounce 0.6s;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .glow {
-      animation: glow 1s ease-in-out infinite alternate;
-    }
-            .heart {
+
+    /* Floating hearts */
+    .heart {
       position: absolute;
       font-size: 24px;
-      color: red;
       opacity: 0.7;
       animation: floatUp 8s linear infinite;
     }
-    @keyframes glow {
-      from { box-shadow: 0 0 5px #ff69b4; }
-      to { box-shadow: 0 0 20px #fff; }
-    }
-    @media (max-width: 600px) {
-      h1 { font-size: 1.5em; }
-      button { font-size: 0.9em; padding: 10px 20px; }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
     }
 
-
+    /* Envelope emoji styling */
+    .envelope {
+      font-size: 8em; /* bigger emoji */
+      cursor: pointer;
+      animation: jiggle 1s infinite;
+      transition: transform 1s ease, opacity 1s ease;
+      margin-top: 100px;
+    }
+    .envelope.zoom {
+      transform: scale(5); /* zoom in */
+      opacity: 0;
+    }
+    @keyframes jiggle {
+      0%   { transform: rotate(0deg); }
+      25%  { transform: rotate(5deg); }
+      50%  { transform: rotate(-5deg); }
+      75%  { transform: rotate(5deg); }
+      100% { transform: rotate(0deg); }
+    }
   </style>
 </head>
 <body>
   <h1 id="question">Do you want to read this message? 💕</h1>
   <button id="yesBtn" onclick="nextQuestion()">Yes</button>
-  <!-- floating hearts using emoji -->
+
+  <!-- floating hearts -->
   <div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
   <div class="heart" style="left:30%; animation-delay:2s;">💖</div>
   <div class="heart" style="left:50%; animation-delay:4s;">💕</div>
-  <div class="heart" style="left:70%; animation-delay:1s;">💞</div>
-  <div class="heart" style="left:85%; animation-delay:3s;">💓</div>
+  <div class="heart" style="left:70%; animation-delay:6s;">💞</div>
+  <div class="heart" style="left:85%; animation-delay:8s;">💓</div>
+
+  <!-- Envelope with heart emoji -->
+  <div id="envelope" class="envelope" style="display:none;">💌</div>
+  <audio id="popSound" src="pop.mp3" preload="auto"></audio>
+
 <script>
   const questions = [
     "Do you want to read this message? 💕",
@@ -95,31 +109,26 @@
 
   function nextQuestion() {
     step++;
-
-    // Select all buttons on the page
-    const buttons = document.querySelectorAll("button");
-
-    // Apply animations depending on step
-    if ([1,4].includes(step)) {
-      buttons.forEach(btn => {
-        btn.classList.add("shake");
-        setTimeout(() => btn.classList.remove("shake"), 10000);
-      });
-    } else if ([2,5].includes(step)) {
-      buttons.forEach(btn => {
-        btn.classList.add("bounce");
-        setTimeout(() => btn.classList.remove("bounce"), 7000);
-      });
-    } else if ([3,6].includes(step)) {
-      buttons.forEach(btn => btn.classList.add("glow"));
-    }
-
-    // Update question text or redirect
     if (step < questions.length) {
       document.getElementById("question").innerText = questions[step];
     } else {
-      location.href = 'message.html';
+      // Show envelope instead of redirect
+      document.getElementById("yesBtn").style.display = "none";
+      document.getElementById("question").style.display = "none";
+      document.getElementById("envelope").style.display = "block";
     }
+  }
+
+  // Envelope click logic
+  const envelope = document.getElementById("envelope");
+  const popSound = document.getElementById("popSound");
+
+  envelope.onclick = function() {
+    envelope.classList.add("zoom"); // zoom in animation
+    popSound.play();
+    setTimeout(() => {
+      window.location.href = 'message.html'; // go to your message page
+    }, 1200); // wait for zoom animation
   }
 </script>
 
