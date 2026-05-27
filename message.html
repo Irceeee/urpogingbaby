@@ -7,7 +7,7 @@
   <style>
 body {
   margin: 0;
-  min-height: 100vh;   /* allow page to grow */
+  min-height: 100vh;   /* instead of fixed height */
   background: linear-gradient(to right, #ffb6c1, #ffc0cb);
   font-family: 'Poppins', sans-serif;
   color: black;
@@ -16,9 +16,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;    /* enable vertical scrolling */
+  /* remove justify-content: center if you want natural scroll */
+  overflow-y: auto;    /* allow vertical scrolling */
 }
-
 
     h1, #message, button {
       position: relative;
@@ -96,18 +96,19 @@ body {
 
 <script>
   // Use backticks for multiline string and include \n\n for paragraph spacing
-  const text = `Hi du, sorry kung biglaan to hahaha, alam kong masyado pang maaga pero sapat na kasi yung naobserve ko du. Kahit minsan lang tayo nagkikita kasi busy kapa hahaha makakasama naman kita soon, ikaw lang yung gusto kong mahalin. Ramdam ko yung pagiging maalaga mo, yung lambing mo, may takot kay papa G, pagiging amazona mo rin (jokeee BAHAHAHA), at higit sa lahat, pagiging totoo mo. 
+  const text = `Hi du, nais ko lang sabihin na mahal na mahal kita. I know we haven’t seen each other much, but I want you to know that you’re always on my mind.
 
-Ang saya saya ko palagi kapag nakakausap kita alam mo naman yun, sorry kung napapasobra haha. I don’t want to pressure you, I just want to be honest. I want you to know that even from a distance, ikaw lang yung pipiliin ko sa araw-araw. 
+  Ramdam ko yung pagiging maalaga mo, yung lambing mo, may takot kay papa G, pagiging amazona mo rin (jokeee BAHAHAHA), at higit sa lahat, pagiging totoo mo.
 
-Du… uhm… Pwede ba kitang ligawan nang dahan-dahan, sa paraang mararamdaman mo yung sincerity ko? Alam kong di ka pa ready, pero gusto ko lang malaman mo na nandito lang ako, handang maghintay at magbigay ng oras para sa atin. Everything I feel for you is real. My intentions are pure and just want to see you happy, as well as making sure you never doubt how deeply loved you’re. 
+Ang saya saya ko palagi kapag nakakausap kita alam mo naman yun, sorry kung napapasobra haha. I don’t want to pressure you, I just want to be honest. I want you to know that even from a distance, ikaw lang yung pipiliin ko sa araw-araw.
 
-Alam kong hindi ako perfect, at hindi ko rin ipapakita na ganun ako, pero promise ko na ibibigay ko lagi yung best version ng sarili ko. Even on the roughest days, I won’t walk away. I’m always here and I’m not giving up on you ever. 
+Du… uhm… Pwede ba kitang ligawan nang dahan-dahan, sa paraang mararamdaman mo yung sincerity ko? Alam kong di ka pa ready, pero gusto ko lang malaman mo na nandito lang ako, handang maghintay at magbigay ng oras para sa atin. Everything I feel for you is real. My intentions are pure and just want to see you happy, as well as making sure you never doubt how deeply loved you’re.
 
-I may not be your first, I may not be the best, but i can promise you this, ill be the one that stays until the end. 
+Alam kong hindi ako perfect, at hindi ko rin ipapakita na ganun ako, pero promise ko na ibibigay ko lagi yung best version ng sarili ko. Even on the roughest days, I won’t walk away. I’m always here and I’m not giving up on you ever.
 
+I may not be your first, I may not be the best, but I can promise you this: I’ll be the one that stays until the end. 💖
 
--Ruan Pogi💖`;
+- Ruan Pogi💖`;
 
   let i = 0;
   function typeWriter() {
@@ -121,6 +122,7 @@ I may not be your first, I may not be the best, but i can promise you this, ill 
   }
   window.onload = typeWriter;
 </script>
+
 
 </body>
 </html>
